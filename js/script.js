@@ -1,3 +1,4 @@
+// Encapsulation: Properties are defined within the constructor and accessed via getters and setters
 class Pet {
     constructor(name, species, age) {
         this._name = name;
@@ -8,6 +9,7 @@ class Pet {
         this._health = 100;
     }
 
+    // Getter and Setter for name
     getName() {
         return this._name;
     }
@@ -16,6 +18,7 @@ class Pet {
         this._name = name;
     }
 
+    // Getter and Setter for species
     getSpecies() {
         return this._species;
     }
@@ -24,6 +27,7 @@ class Pet {
         this._species = species;
     }
 
+    // Getter and Setter for age
     getAge() {
         return this._age;
     }
@@ -32,6 +36,7 @@ class Pet {
         this._age = age;
     }
 
+    // Methods to perform actions on the pet
     feed() {
         this._hunger -= 10;
         this._happiness += 5;
@@ -53,6 +58,7 @@ class Pet {
         this._health += 10;
     }
 
+    // Display status of the pet
     displayStatus() {
         return `
             Name: ${this._name}<br>
@@ -64,16 +70,19 @@ class Pet {
         `;
     }
 
+    // Placeholder for polymorphism (will be overridden in subclasses)
     speak() {
         return "";
     }
 }
 
+// Inheritance: Dog and Cat classes inherit from Pet class
 class Dog extends Pet {
     constructor(name, age) {
-        super(name, "Dog", age);
+        super(name, "Dog", age); // Call parent class constructor
     }
 
+    // Polymorphism: Overriding the speak method
     speak() {
         return "Woof!";
     }
@@ -81,20 +90,36 @@ class Dog extends Pet {
 
 class Cat extends Pet {
     constructor(name, age) {
-        super(name, "Cat", age);
+        super(name, "Cat", age); // Call parent class constructor
     }
 
+    // Polymorphism: Overriding the speak method
     speak() {
         return "Meow!";
     }
 }
 
-const myPet = new Dog("Buddy", 3);
+// Abstraction: Abstracting the creation of pet objects into a function
+function createPet(type, name, age) {
+    switch (type) {
+        case "Dog":
+            return new Dog(name, age);
+        case "Cat":
+            return new Cat(name, age);
+        default:
+            throw new Error("Unknown pet type");
+    }
+}
 
+// Create an instance of a pet
+const myPet = createPet("Dog", "Buddy", 3);
+
+// Function to update the status display
 function updateStatus() {
     document.getElementById("status").innerHTML = myPet.displayStatus();
 }
 
+// Functions to perform actions on the pet
 function playWithPet() {
     myPet.play();
     updateStatus();

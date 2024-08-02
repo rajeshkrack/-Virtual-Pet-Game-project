@@ -1,58 +1,104 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Header and Navbar */
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1em 0;
+    text-align: center;
 }
 
 nav {
+    display: flex;
+    justify-content: center;
     background-color: #333;
-    color: white;
-    padding: 1em;
 }
 
 nav ul {
     list-style: none;
-    margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: space-around;
 }
 
 nav ul li {
     display: inline;
+    margin: 0 15px;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
+    padding: 0.5em 1em;
 }
 
-header {
-    background-color: #f4f4f4;
+nav ul li a:hover {
+    background-color: #575757;
+    border-radius: 4px;
+}
+
+/* Main Content */
+main {
     padding: 2em;
-    text-align: center;
 }
 
 section {
-    padding: 2em;
+    margin-bottom: 2em;
 }
 
 #game-container {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+
+#pet-status, #pet-actions {
+    margin: 1em 0;
 }
 
 #pet-actions button {
     display: block;
     margin: 0.5em 0;
+    padding: 0.5em 1em;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
+#pet-actions button:hover {
+    background-color: #45a049;
+}
+
+/* Footer */
 footer {
     background-color: #333;
     color: white;
     text-align: center;
-    padding: 1em;
+    padding: 1em 0;
     position: fixed;
     width: 100%;
     bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 0.5em 0;
+    }
+
+    #game-container {
+        width: 100%;
+        padding: 1em;
+    }
 }
